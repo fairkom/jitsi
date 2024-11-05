@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OCA\jitsi\Controller;
+namespace OCA\fairmeeting\Controller;
 
 use Ahc\Jwt\JWT;
-use OCA\jitsi\Config\Config;
-use OCA\jitsi\Db\Room;
-use OCA\jitsi\Db\RoomMapper;
+use OCA\fairmeeting\Config\Config;
+use OCA\fairmeeting\Db\Room;
+use OCA\fairmeeting\Db\RoomMapper;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\IRequest;

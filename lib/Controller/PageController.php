@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace OCA\jitsi\Controller;
+namespace OCA\fairmeeting\Controller;
 
-use OCA\jitsi\Config\Config;
+use OCA\fairmeeting\Config\Config;
 use OCP\AppFramework\Http\ContentSecurityPolicy;
 use OCP\AppFramework\Http\FeaturePolicy;
 use OCP\AppFramework\Http\Response;
@@ -31,7 +31,7 @@ class PageController extends AbstractController {
 			return $checkBrowserResult;
 		}
 
-		return new TemplateResponse('jitsi', 'index');
+		return new TemplateResponse('fairmeeting', 'index');
 	}
 
 	/**
@@ -40,7 +40,7 @@ class PageController extends AbstractController {
 	 * @PublicPage
 	 */
 	public function blank(): TemplateResponse {
-		return new TemplateResponse('jitsi', 'blank');
+		return new TemplateResponse('fairmeeting', 'blank');
 	}
 
 	/**
@@ -57,13 +57,13 @@ class PageController extends AbstractController {
 		$renderAs = $loggedIn ? 'user' : 'public';
 
 		$response = new TemplateResponse(
-			'jitsi',
+			'fairmeeting',
 			'room',
 			[
 				'loggedIn' => $loggedIn,
-				'serverUrl' => $this->appConfig->jitsiServerUrl(),
+				'serverUrl' => $this->appConfig->fairmeetingServerUrl(),
 				'helpLink' => $this->appConfig->helpLink(),
-				'display_join_using_the_jitsi_app' => $this->appConfig->displayJoinUsingTheJitsiApp(),
+				'display_join_using_the_fairmeeting_app' => $this->appConfig->displayJoinUsingThefairmeetingApp(),
 				'display_all_sharing_invites' =>  $this->appConfig->displayAllSharingInvites(),
 			],
 			$renderAs
@@ -74,8 +74,8 @@ class PageController extends AbstractController {
 	}
 
 	private function setPolicies(Response $response): void {
-		$serverUrl = $this->appConfig->jitsiServerUrl();
-		$serverHost = $this->determineJitsiHost();
+		$serverUrl = $this->appConfig->fairmeetingServerUrl();
+		$serverHost = $this->determinefairmeetingHost();
 
 		if ($serverUrl === null || $serverHost === null) {
 			return;
@@ -95,8 +95,8 @@ class PageController extends AbstractController {
 		$response->setFeaturePolicy($fp);
 	}
 
-	private function determineJitsiHost(): ?string {
-		$serverUrl = $this->appConfig->jitsiServerUrl();
+	private function determinefairmeetingHost(): ?string {
+		$serverUrl = $this->appConfig->fairmeetingServerUrl();
 
 		if ($serverUrl === null) {
 			return null;

@@ -2,18 +2,18 @@
 	<div>
 		<form @submit.prevent="submit">
 			<fieldset :disabled="saving">
-				<SettingsSection title="Jitsi">
+				<SettingsSection title="fairmeeting">
 					<div v-if="loading">
-						{{ t("jitsi", "Loading …") }}
+						{{ t("fairmeeting", "Loading …") }}
 					</div>
 					<div v-if="!loading">
 						<div class="group">
-							<label for="jitsi_server_url" class="label">
-								{{ t("jitsi", "Server URL (required)") }}
+							<label for="fairmeeting_server_url" class="label">
+								{{ t("fairmeeting", "Server URL (required)") }}
 							</label>
 							<div class="input-group">
 								<input
-									id="jitsi_server_url"
+									id="fairmeeting_server_url"
 									v-model="serverUrl"
 									class="input"
 									type="text"
@@ -24,12 +24,12 @@
 							</div>
 						</div>
 						<div class="group">
-							<label for="jitsi_help_link" class="label">
-								{{ t("jitsi", "Help link (optional)") }}
+							<label for="fairmeeting_help_link" class="label">
+								{{ t("fairmeeting", "Help link (optional)") }}
 							</label>
 							<div class="input-group">
 								<input
-									id="jitsi_help_link"
+									id="fairmeeting_help_link"
 									v-model="helpLink"
 									class="input"
 									type="text"
@@ -37,13 +37,15 @@
 							</div>
 						</div>
 						<div class="group">
-							<label for="display_join_using_the_jitsi_app" class="label">
-								{{ t("jitsi", 'Display "Join using the Jitsi app"') }}
+							<label for="display_join_using_the_fairmeeting_app" class="label">
+								{{
+									t("fairmeeting", 'Display "Join using the fairmeeting app"')
+								}}
 							</label>
 							<div class="input-group">
 								<input
-									id="display_join_using_the_jitsi_app"
-									v-model="displayJoinUsingTheJitsiApp"
+									id="display_join_using_the_fairmeeting_app"
+									v-model="displayJoinUsingThefairmeetingApp"
 									true-value="1"
 									false-value="0"
 									class="admin-checkbox"
@@ -51,14 +53,15 @@
 								/>
 							</div>
 						</div>
+
 						<strong class="group-label">JSON Web Token</strong>
 						<div class="group">
-							<label for="jitsi_jwt_secret" class="label">
-								{{ t("jitsi", "JWT Secret (optional)") }}
+							<label for="fairmeeting_jwt_secret" class="label">
+								{{ t("fairmeeting", "JWT Secret (optional)") }}
 							</label>
 							<div class="input-group">
 								<input
-									id="jitsi_jwt_secret"
+									id="fairmeeting_jwt_secret"
 									v-model="jwtSecret"
 									class="input"
 									type="text"
@@ -66,12 +69,12 @@
 							</div>
 						</div>
 						<div v-if="jwtSecret" class="group">
-							<label for="jitsi_jwt_app_id" class="label">
-								{{ t("jitsi", "JWT App ID") }}
+							<label for="fairmeeting_jwt_app_id" class="label">
+								{{ t("fairmeeting", "JWT App ID") }}
 							</label>
 							<div class="input-group">
 								<input
-									id="jitsi_jwt_app_id"
+									id="fairmeeting_jwt_app_id"
 									v-model="jwtAppId"
 									class="input"
 									type="text"
@@ -82,12 +85,12 @@
 							</div>
 						</div>
 						<div v-if="jwtSecret" class="group">
-							<label for="jitsi_jwt_audience" class="label">
-								{{ t("jitsi", "JWT Audience (optional)") }}
+							<label for="fairmeeting_jwt_audience" class="label">
+								{{ t("fairmeeting", "JWT Audience (optional)") }}
 							</label>
 							<div class="input-group">
 								<input
-									id="jitsi_jwt_audience"
+									id="fairmeeting_jwt_audience"
 									v-model="jwtAudience"
 									class="input"
 									type="text"
@@ -95,12 +98,12 @@
 							</div>
 						</div>
 						<div v-if="jwtSecret" class="group">
-							<label for="jitsi_jwt_issuer" class="label">
-								{{ t("jitsi", "JWT Issuer (optional)") }}
+							<label for="fairmeeting_jwt_issuer" class="label">
+								{{ t("fairmeeting", "JWT Issuer (optional)") }}
 							</label>
 							<div class="input-group">
 								<input
-									id="jitsi_jwt_issuer"
+									id="fairmeeting_jwt_issuer"
 									v-model="jwtIssuer"
 									class="input"
 									type="text"
@@ -108,10 +111,10 @@
 							</div>
 						</div>
 						<strong class="group-label">Invite & Share</strong>
-					
+
 						<div class="group">
 							<label for="display_all_sharing_invites" class="label">
-								{{ t("jitsi", "Show all sharing invites ") }}
+								{{ t("fairmeeting", "Show all sharing invites ") }}
 							</label>
 							<div class="input-group">
 								<input
@@ -126,13 +129,13 @@
 						</div>
 						<div class="group group--centered">
 							<button type="submit" class="primary" :disabled="saving">
-								{{ t("jitsi", "save") }}
+								{{ t("fairmeeting", "save") }}
 							</button>
 							<span v-if="!saving && saved" class="msg success">
-								{{ t("jitsi", "saved") }}
+								{{ t("fairmeeting", "saved") }}
 							</span>
 							<span v-if="saving" class="msg">
-								{{ t("jitsi", "Saving …") }}
+								{{ t("fairmeeting", "Saving …") }}
 							</span>
 						</div>
 					</div>
@@ -165,8 +168,7 @@ export default {
 			serverUrlStatus: false,
 			serverUrlMessage: "",
 			helpLink: "",
-			displayJoinUsingTheJitsiApp: 0,
-			disableInviteFunctions: 0,
+			displayJoinUsingThefairmeetingApp: 0,
 		};
 	},
 	computed: {
@@ -179,10 +181,10 @@ export default {
 		this.jwtAppId = await this.loadSetting("jwt_app_id");
 		this.jwtAudience = await this.loadSetting("jwt_audience");
 		this.jwtIssuer = await this.loadSetting("jwt_issuer");
-		this.serverUrl = await this.loadSetting("jitsi_server_url");
+		this.serverUrl = await this.loadSetting("fairmeeting_server_url");
 		this.helpLink = await this.loadSetting("help_link");
-		this.displayJoinUsingTheJitsiApp = await this.loadSetting(
-			"display_join_using_the_jitsi_app",
+		this.displayJoinUsingThefairmeetingApp = await this.loadSetting(
+			"display_join_using_the_fairmeeting_app",
 			"1"
 		);
 		this.displayAllSharingInvites = await this.loadSetting(
@@ -204,19 +206,15 @@ export default {
 			this.saved = false;
 
 			await Promise.all([
-				await this.updateSetting("jitsi_server_url", this.serverUrl),
+				await this.updateSetting("fairmeeting_server_url", this.serverUrl),
 				await this.updateSetting("jwt_secret", this.jwtSecret),
 				await this.updateSetting("jwt_app_id", this.jwtAppId),
 				await this.updateSetting("jwt_audience", this.jwtAudience),
 				await this.updateSetting("jwt_issuer", this.jwtIssuer),
 				await this.updateSetting("help_link", this.helpLink),
 				await this.updateSetting(
-					"display_join_using_the_jitsi_app",
-					this.displayJoinUsingTheJitsiApp
-				),
-				await this.updateSetting(
-					"display_all_sharing_invites",
-					this.displayAllSharingInvites
+					"display_join_using_the_fairmeeting_app",
+					this.displayJoinUsingThefairmeetingApp
 				),
 			]);
 
@@ -235,63 +233,66 @@ export default {
 			if (!this.serverUrl) {
 				this.serverUrlStatus = "error";
 				this.serverUrlMessage = this.t(
-					"jitsi",
-					"Please provide a Jitsi instance URL"
+					"fairmeeting",
+					"Please provide a fairmeeting instance URL"
 				);
 			}
 
 			if (!this.serverUrl.startsWith("https://")) {
 				this.serverUrlStatus = "error";
 				this.serverUrlMessage = this.t(
-					"jitsi",
+					"fairmeeting",
 					"The server URL must start with https://"
 				);
 			}
 
-			if (this.serverUrl === "https://meet.jit.si") {
+			if (this.serverUrl === "https://meet.jit.si/") {
 				this.serverUrlStatus = "warning";
 				this.serverUrlMessage = this.t(
-					"jitsi",
-					"It is highly recommended to set up a dedicated Jitsi instance or use https://fairmeeting.net/"
+					"fairmeeting",
+					"It is highly recommended to set up a dedicated fairmeeting instance"
 				);
 			}
 
 			this.jwtAppIdMessage = "";
 
 			if (this.jwtSecret && !this.jwtAppId) {
-				this.jwtAppIdMessage = this.t("jitsi", "Please provide the App ID");
+				this.jwtAppIdMessage = this.t(
+					"fairmeeting",
+					"Please provide the App ID"
+				);
 			}
 		},
 		async updateSetting(name, value) {
 			try {
 				await new Promise((resolve, reject) =>
-					OCP.AppConfig.setValue("jitsi", name, value, {
+					OCP.AppConfig.setValue("fairmeeting", name, value, {
 						success: resolve,
 						error: reject,
 					})
 				);
 			} catch (e) {
-				this.error = this.t("jitsi", "Failed to save settings");
+				this.error = this.t("fairmeeting", "Failed to save settings");
 				throw e;
 			}
 		},
 		async loadSetting(name, defaultValue = null) {
 			try {
 				const resDocument = await new Promise((resolve, reject) =>
-					OCP.AppConfig.getValue("jitsi", name, defaultValue, {
+					OCP.AppConfig.getValue("fairmeeting", name, defaultValue, {
 						success: resolve,
 						error: reject,
 					})
 				);
 				if (resDocument.querySelector("status").textContent !== "ok") {
-					this.errorMessage = this.t("jitsi", "Failed to load settings");
+					this.errorMessage = this.t("fairmeeting", "Failed to load settings");
 					console.error("Failed request", resDocument);
 					return;
 				}
 				const dataEl = resDocument.querySelector("data");
 				return dataEl.firstElementChild.textContent;
 			} catch (e) {
-				this.errorMessage = this.t("jitsi", "Failed to load settings");
+				this.errorMessage = this.t("fairmeeting", "Failed to load settings");
 				throw e;
 			}
 		},

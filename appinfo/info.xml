@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
-    <id>jitsi</id>
-    <name>Jitsi Integration</name>
-    <summary>Jitsi Integration (unofficial)</summary>
-    <description>This app integrates Jitsi conferences into Nextcloud.
+    <id>fairmeeting</id>
+    <name>fairmeeting Integration</name>
+    <summary>fairmeeting Integration (unofficial)</summary>
+    <description>This app integrates fairmeeting conferences into Nextcloud.
 
 Features:
-- 🎥 Easy online conferences in Nextcloud utilising Jitsi
+- 🎥 Easy online conferences in Nextcloud utilising fairmeeting
 - 🔗 Sharable conference room links
 - 🔎 Shows conference rooms in the global search
 - ✅ System test before joining a conference
@@ -17,16 +17,16 @@ Please read the [documentation](https://github.com/nextcloud/jitsi).
     <version>0.19.0</version>
     <licence>agpl</licence>
     <author mail="mail@michael-weimann.eu" homepage="https://weimann.digital/">Michael Weimann</author>
-    <namespace>jitsi</namespace>
+    <namespace>fairmeeting</namespace>
     <category>social</category>
-    <bugs>https://github.com/nextcloud/jitsi/issues</bugs>
-    <website>https://github.com/nextcloud/jitsi</website>
-    <screenshot>https://github.com/nextcloud/jitsi/raw/master/screenshots/join.png</screenshot>
-    <screenshot>https://github.com/nextcloud/jitsi/raw/master/screenshots/rooms.png</screenshot>
+    <bugs>https://github.com/nextcloud/fairmeeting/issues</bugs>
+    <website>https://github.com/nextcloud/fairmeeting</website>
+    <screenshot>https://github.com/nextcloud/fairmeeting/raw/master/screenshots/join.png</screenshot>
+    <screenshot>https://github.com/nextcloud/fairmeeting/raw/master/screenshots/rooms.png</screenshot>
 
 	<settings>
-		<admin>OCA\jitsi\Settings\AdminSettings</admin>
-		<admin-section>OCA\jitsi\Settings\AdminSection</admin-section>
+		<admin>OCA\fairmeeting\Settings\AdminSettings</admin>
+		<admin-section>OCA\fairmeeting\Settings\AdminSection</admin-section>
 	</settings>
 
     <dependencies>
@@ -35,7 +35,7 @@ Please read the [documentation](https://github.com/nextcloud/jitsi).
     <navigations>
         <navigation>
             <name>Conferences</name>
-            <route>jitsi.page.index</route>
+            <route>fairmeeting.page.index</route>
         </navigation>
     </navigations>
 </info>

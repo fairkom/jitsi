@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace OCA\jitsi\AppInfo;
+namespace OCA\fairmeeting\AppInfo;
 
-use OCA\jitsi\Config\Config;
-use OCA\jitsi\Search\Provider;
+use OCA\fairmeeting\Config\Config;
+use OCA\fairmeeting\Search\Provider;
 use OCP\AppFramework\App;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
 
 class Application extends App implements IBootstrap {
-	public const APP_ID = 'jitsi';
-	public const APP_NAME = 'Jitsi Integration';
+	public const APP_ID = 'fairmeeting';
+	public const APP_NAME = 'fairmeeting Integration';
 
 	public function __construct() {
 		parent::__construct(self::APP_ID);
@@ -25,22 +25,22 @@ class Application extends App implements IBootstrap {
 	}
 
 	public function boot(IBootContext $context): void {
-		$this->setUpJitsiServerUrl($context);
+		$this->setUpfairmeetingServerUrl($context);
 	}
 
-	private function setUpJitsiServerUrl(IBootContext $context): void {
+	private function setUpfairmeetingServerUrl(IBootContext $context): void {
 		/** @var Config $config */
 		$config = $context->getAppContainer()->query(Config::class);
 
-		$serverUrl = $config->jitsiServerUrl();
+		$serverUrl = $config->fairmeetingServerUrl();
 
 		if (empty($serverUrl)) {
-			$config->updateJitsiServerUrl('https://fairmeeting.net/');
+			$config->updatefairmeetingServerUrl('https://fairmeeting.net/');
 			return;
 		}
 
 		if (substr($serverUrl, -1) !== '/') {
-			$config->updateJitsiServerUrl($serverUrl . '/');
+			$config->updatefairmeetingServerUrl($serverUrl . '/');
 		}
 	}
 }
