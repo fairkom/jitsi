@@ -16,11 +16,11 @@ Please read the [documentation](https://github.com/nextcloud/jitsi).
     </description>
     <version>0.19.0</version>
     <licence>agpl</licence>
-    <author mail="mail@michael-weimann.eu" homepage="https://weimann.digital/">Michael Weimann</author>
+    <author mail="philipp.monz@fairkom.eu" homepage="https://fairkom.eu">Philipp Monz</author>
     <namespace>fairmeeting</namespace>
     <category>social</category>
-    <bugs>https://github.com/nextcloud/fairmeeting/issues</bugs>
-    <website>https://github.com/nextcloud/fairmeeting</website>
+    <bugs>https://git.fairkom.net/hosting/fairkom/nextcloud_fairmeeting/-/issues</bugs> 
+    <website>https://git.fairkom.net/hosting/fairkom/nextcloud_fairmeeting</website>
     <screenshot>https://github.com/nextcloud/fairmeeting/raw/master/screenshots/join.png</screenshot>
     <screenshot>https://github.com/nextcloud/fairmeeting/raw/master/screenshots/rooms.png</screenshot>
 
