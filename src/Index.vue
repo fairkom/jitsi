@@ -7,6 +7,11 @@
 			<h1 class="h1 app-title__text">
 				{{ t("fairmeeting", "Conference rooms") }}
 			</h1>
+			<img
+				src="./../img/fairmeeting_icon.png"
+				alt="Fairmeeting Icon"
+				class="app-icon"
+			/>
 			<button
 				v-if="rooms.length > 0"
 				class="icon-add app-title__button"
@@ -75,6 +80,13 @@ export default {
 </script>
 
 <style scoped>
+.app-icon {
+	display: block;
+	width: 50px;
+	height: auto;
+	margin: 5px;
+}
+
 .app-title {
 	align-items: center;
 	display: flex;
