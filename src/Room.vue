@@ -486,9 +486,9 @@ export default {
 
 			const configOverwrite = {
 				subject: this.room.name,
+				enableClosePage: false,
 				disableDeepLinking: true,
 				prejoinPageEnabled: false,
-				"prejoinConfig.enabled": false,
 				prejoinConfig: {
 					enabled: false,
 				},
