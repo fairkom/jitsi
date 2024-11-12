@@ -34,7 +34,7 @@ Please read the [documentation](https://github.com/nextcloud/jitsi).
     </dependencies>
     <navigations>
         <navigation>
-            <name>Conferences</name>
+            <name>fairmeeting</name>
             <route>fairmeeting.page.index</route>
         </navigation>
     </navigations>
