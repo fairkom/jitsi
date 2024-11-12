@@ -52,19 +52,19 @@ This will compress all files in the current directory.
 scp fairmeeting.zip nx-dev2:.
 ```
 
-- Go to where you tranfered it on the server and than copy it into the container of AIO:
+- Go to where you tranfered it on the server and than copy it into the container nextcloud/aio-nextcloud:latest:
 
 ```
-docker cp fairmeeting.zip 150c790612bf:/var/www/html/custom_apps
+docker cp fairmeeting.zip d0017486b840:/var/www/html/custom_apps
 ```
 
 - Go inside the container:
 
 ```
-docker exec -it 150c790612bf bash
+docker exec -it d0017486b840 bash
 ```
 
-- Go to /var/www/html/custom_apps and unzip:
+- Go to /var/www/html/custom_apps and unzip:cd
 
 ```
 unzip fairmeeting.zip
