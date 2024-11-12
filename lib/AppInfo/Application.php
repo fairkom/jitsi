@@ -13,7 +13,7 @@ use OCP\AppFramework\Bootstrap\IRegistrationContext;
 
 class Application extends App implements IBootstrap {
 	public const APP_ID = 'fairmeeting';
-	public const APP_NAME = 'fairmeeting Integration';
+	public const APP_NAME = 'fairmeeting videoconferencing';
 
 	public function __construct() {
 		parent::__construct(self::APP_ID);
