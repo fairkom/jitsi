@@ -1,10 +1,10 @@
 # fairmeeting integration for Nextcloud
 
-forked from https://github.com/nextcloud/jitsi
-fork on github: https://github.com/fairkom/nextcloud-fairmeeting-integration
-fork on gitlab: https://git.fairkom.net/hosting/fairkom/nextcloud_fairmeeting
-opimized for: https://www.fairkom.eu/en/fairmeeting
-faq: https://git.fairkom.net/hosting/fairmeeting/-/wikis/home
+- forked from https://github.com/nextcloud/jitsi
+- fork on github: https://github.com/fairkom/nextcloud-fairmeeting-integration
+- fork on gitlab: https://git.fairkom.net/hosting/fairkom/nextcloud_fairmeeting
+- opimized for: https://www.fairkom.eu/en/fairmeeting
+- faq: https://git.fairkom.net/hosting/fairmeeting/-/wikis/home
 
 ## Local Dev Instance:
 
@@ -22,7 +22,7 @@ uses the nextcloud developer docker: https://github.com/juliushaertl/nextcloud-d
 ```
 docker run --rm -p 8080:80 -e SERVER_BRANCH=v28.0.6 \
   -v $(pwd):/var/www/html/apps/fairmeeting \
-  ghcr.io/juliushaertl/nextcloud-dev-php80:latest
+  ghcr.io/juliusknorr/nextcloud-dev-php81:latest
 ```
 
 - than go to http://localhost:8080/index.php/settings/apps, login with u: admin pw: admin, and activate the 'fairmeeting Integration App'
@@ -40,7 +40,7 @@ docker run --rm -p 8080:80 -e SERVER_BRANCH=v28.0.6 \
   After the build is complete, create a ZIP file containing all the necessary project files. `fairmeeting.zip`. You can use the following command to create the zip:
 
 ```
-zip -r fairmeeting-zip *
+cd .. && zip -r fairmeeting.zip nextcloud-fairmeeting-integration
 ```
 
 This will compress all files in the current directory.
@@ -49,26 +49,30 @@ This will compress all files in the current directory.
   Run the following command to send it to `dev2.faircloud.eu`, replace server or path if necessary
 
 ```
-scp fairmeeting-zip nx-dev2:/
+scp fairmeeting.zip nx-dev2:.
 ```
 
 - Go to where you tranfered it on the server and than copy it into the container of AIO:
 
 ```
-docker cp <source_path> <container_id>:<destination_path>
+docker cp fairmeeting.zip 150c790612bf:/var/www/html/custom_apps
 ```
 
 - Go inside the container:
 
 ```
-docker exec -it <container_id> bash
+docker exec -it 150c790612bf bash
 ```
 
-- Unzip the file in the right folder:
+- Go to /var/www/html/custom_apps and unzip:
 
 ```
 unzip fairmeeting.zip
 ```
+
+- rename the folder:
+
+mv nextcloud-fairmeeting-integration/ fairmeeting/
 
 ## Features
 
