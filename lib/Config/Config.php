@@ -59,6 +59,10 @@ class Config {
 		return $this->readString(self::KEY_HELP_LINK);
 	}
 
+	public function updateHelpLink(string $helpLink): void {
+		$this->config->setAppValue(Application::APP_ID, self::KEY_HELP_LINK, $helpLink);
+	}
+
 	public function displayJoinUsingThefairmeetingApp(): bool {
 		// @phpstan-ignore-next-line
 		return $this->readBool(self::KEY_DISPLAY_JOIN_USING_THE_fairmeeting_APP, true);

@@ -26,6 +26,7 @@ class Application extends App implements IBootstrap {
 
 	public function boot(IBootContext $context): void {
 		$this->setUpfairmeetingServerUrl($context);
+		$this->setUpHelpLink($context);
 	}
 
 	private function setUpfairmeetingServerUrl(IBootContext $context): void {
@@ -41,6 +42,17 @@ class Application extends App implements IBootstrap {
 
 		if (substr($serverUrl, -1) !== '/') {
 			$config->updatefairmeetingServerUrl($serverUrl . '/');
+		}
+	}
+
+	private function setUpHelpLink(IBootContext $context): void {
+		/** @var Config $config */
+		$config = $context->getAppContainer()->query(Config::class);
+
+		$helpLink = $config->helpLink();
+
+		if (empty($helpLink)) {
+			$config->updateHelpLink('https://git.fairkom.net/hosting/fairmeeting/-/wikis/home');
 		}
 	}
 }
